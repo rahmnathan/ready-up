@@ -1,0 +1,26 @@
+endpoints.prometheus.enabled: true
+logging.pattern.level: "%5p %mdc"
+management.endpoints.web.exposure.include: "*"
+server:
+  port: 8080
+  ssl:
+    enabled: false
+spring:
+  datasource:
+    password:
+    url: "jdbc:h2:mem:AZ;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
+    username: sa
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    properties.hibernate.jdbc.lob.non_contextual_creation: true
+    show-sql: false
+  profiles:
+    active: stub
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+
+keycloak:
+  enabled: false

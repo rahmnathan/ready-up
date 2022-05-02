@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ready-up
+spec:
+  type: ClusterIP
+  selector:
+    app: ready-up
+  ports:
+    - name: http
+      port: 8080

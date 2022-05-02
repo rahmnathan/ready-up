@@ -1,0 +1,10 @@
+spring:
+  application.name: ready-up
+  cloud.vault:
+    enabled: false
+    host: 192.168.1.8
+    port: 8200
+    scheme: https
+    authentication: TOKEN
+    generic.backend: ready-up
+    token: <token>

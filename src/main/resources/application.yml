@@ -1,0 +1,58 @@
+endpoints.prometheus.enabled: true
+logging:
+  pattern.level: "correlation-id=%X{x-correlation-id}"
+  level:
+    com.github.rahmnathan: info
+
+server:
+  port: 8080
+  ssl:
+    enabled: false
+spring:
+  datasource:
+    password: pw123
+    url: "jdbc:postgresql://localhost:5432/ready_up"
+    username: ready-up
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    properties.hibernate.jdbc.lob.non_contextual_creation: true
+    show-sql: false
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+
+opentracing:
+  jaeger:
+    enabled: false
+
+keycloak:
+  auth-server-url: https://login.nathanrahm.com/auth
+  public-client: true
+  realm: ReadyUp
+  resource: ready-up-login
+  security-constraints:
+    - authRoles:
+        - ready-up-user
+      security-collections:
+        - name: "secure stuff"
+          patterns:
+            - "/*"
+  ssl-required: external
+  enabled: false
+
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true

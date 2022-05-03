@@ -18,12 +18,14 @@ spec:
       http:
         paths:
          - path: /
+           pathType: ImplementationSpecific
            backend:
              service:
                name: ready-up
                port: 
                  name: http
          - path: /actuator
+           pathType: ImplementationSpecific
            backend:
              service:
                name: nowhere

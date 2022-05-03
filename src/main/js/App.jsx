@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router } from "@reach/router";
 import { MainPage } from './MainPage.jsx';
 
 class App extends React.Component {
@@ -11,9 +10,7 @@ class App extends React.Component {
 
     render(){
         return(
-            <Router>
-                <MainPage path='/'/>
-            </Router>
+            <MainPage/>
         );
     }
 }

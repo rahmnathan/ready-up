@@ -1,7 +1,8 @@
 import React from 'react';
 
 const layoutProps = {
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'white'
 };
 
 export class MainPage extends React.Component {
@@ -13,7 +14,7 @@ export class MainPage extends React.Component {
     render() {
         return (
             <div style={layoutProps}>
-                Ready Up
+                <h1>Ready Up</h1>
             </div>
         )
     }

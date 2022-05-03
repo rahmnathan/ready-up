@@ -11,13 +11,12 @@ server:
 spring:
   datasource:
     password: pw123
-    url: "jdbc:postgresql://localhost:5432/ready_up"
-    username: ready-up
+    url: "jdbc:postgresql://localhost:5432/readyup"
+    username: readyup
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: validate
-    properties.hibernate.jdbc.lob.non_contextual_creation: true
+      ddl-auto: create
     show-sql: false
   mvc:
     pathmatch:

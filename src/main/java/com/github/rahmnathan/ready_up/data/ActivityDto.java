@@ -1,8 +1,12 @@
 package com.github.rahmnathan.ready_up.data;
 
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Value
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ActivityDto {
-    private final String name;
+    private String name;
 }

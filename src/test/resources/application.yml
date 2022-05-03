@@ -14,13 +14,13 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: create-drop
-    properties.hibernate.jdbc.lob.non_contextual_creation: true
     show-sql: false
-  profiles:
-    active: stub
   mvc:
     pathmatch:
       matching-strategy: ant-path-matcher
+  config:
+    activate:
+      on-profile: stub
 
 keycloak:
   enabled: false

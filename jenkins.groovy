@@ -67,9 +67,7 @@ node {
         }
         stage('Functional Test') {
             try {
-                withCredentials([usernamePassword(credentialsId: 'ReadyUpCredentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh 'jmeter -n -t src/test/jmeter/ready-up-web-test.jmx -Jusername=$USERNAME -Jpassword=$PASSWORD'
-                }
+                sh 'jmeter -n -t src/test/jmeter/ready-up-web-test.jmx'
             } catch (e) {
                 stage('Rollback') {
                     withCredentials([file(credentialsId: 'Kubeconfig', variable: 'KUBE_CONFIG')]) {

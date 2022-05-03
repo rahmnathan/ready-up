@@ -19,12 +19,16 @@ spec:
         paths:
          - path: /
            backend:
-             serviceName: ready-up
-             servicePort: http
+             service:
+               name: ready-up
+               port: 
+                 name: http
          - path: /actuator
            backend:
-             serviceName: nowhere
-             servicePort: http
+             service:
+               name: nowhere
+               port:
+                 name: http
   tls:
         - hosts:
               - ready-up.nathanrahm.com

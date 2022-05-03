@@ -11,7 +11,7 @@ server:
 spring:
   datasource:
     password: pw123
-    url: "jdbc:postgresql://localhost:5432/readyup"
+    url: "jdbc:postgresql://postgresql.postgres.svc.cluster.local:5432/readyup"
     username: readyup
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect

@@ -1,4 +1,4 @@
-ready-up:
+ready_up:
     imageRepository: rahmnathan
     postgresIp: postgres-postgresql.default
     vaultToken: <vault-token>

@@ -20,7 +20,7 @@ node {
             buildInfo = Artifactory.newBuildInfo()
         }
         stage('Checkout') {
-            git 'https://github.com/rahmnathan/ready-up.git'
+            git branch: 'main', url: 'https://github.com/rahmnathan/ready-up.git'
         }
         stage('Set Version') {
             PROJECT_VERSION = sh(

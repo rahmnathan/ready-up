@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
+
 @Slf4j
 @RestController
 @RequestMapping(value = "/ready-up/v1/activity")
@@ -21,9 +23,9 @@ public class ActivityResource {
     }
 
     @PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ActivityDto createActivity(@RequestBody ActivityDto activity, HttpServletResponse response) {
+    public ActivityDto createActivity(@RequestBody ActivityDto activity, HttpServletResponse response, Principal principal) {
         log.info("Received request: {}", activity);
 
-        return activityService.createActivity(activity);
+        return activityService.createActivity(activity, principal.getName());
     }
 }

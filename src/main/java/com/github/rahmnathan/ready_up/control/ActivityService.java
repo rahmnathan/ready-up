@@ -24,10 +24,7 @@ public class ActivityService {
     private final UserRepository userRepository;
 
     @Transactional
-    public ActivityDto createActivity(ActivityDto activityDto){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userId = authentication.getPrincipal().toString();
-
+    public ActivityDto createActivity(ActivityDto activityDto, String userId){
         User user = userRepository.findUserByUserId(userId)
                 .orElseThrow();
 

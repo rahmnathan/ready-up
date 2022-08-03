@@ -1,15 +1,17 @@
 package com.github.rahmnathan.ready_up.persistence.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Set;
 
+@Builder
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
 @NoArgsConstructor
 public class Activity {
 
@@ -20,16 +22,25 @@ public class Activity {
 
     private String name;
 
+    @ManyToMany(mappedBy = "userId")
+    private Set<User> members;
+
+    @ManyToOne
+    private User createdBy;
+    private LocalDateTime createdDate;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Activity activity = (Activity) o;
-        return Objects.equals(id, activity.id) && Objects.equals(name, activity.name);
+        return Objects.equals(id, activity.id) && Objects.equals(name, activity.name) && Objects.equals(members, activity.members) && Objects.equals(createdBy, activity.createdBy) && Objects.equals(createdDate, activity.createdDate) && Objects.equals(startDate, activity.startDate) && Objects.equals(endDate, activity.endDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id, name, members, createdBy, createdDate, startDate, endDate);
     }
 }

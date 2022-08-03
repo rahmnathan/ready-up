@@ -14,7 +14,7 @@ export class MainPage extends React.Component {
     render() {
         return (
             <div style={layoutProps}>
-                <h1>Ready Up</h1>
+                <h1>Ready Up Hoes</h1>
             </div>
         )
     }

@@ -30,7 +30,7 @@ keycloak:
   auth-server-url: https://login.nathanrahm.com/auth
   public-client: true
   realm: ReadyUp
-  resource: ready-up-login
+  resource: ready-up
   security-constraints:
     - authRoles:
         - ready-up-user
@@ -39,7 +39,7 @@ keycloak:
           patterns:
             - "/*"
   ssl-required: external
-  enabled: false
+  enabled: true
 
 management:
   endpoint:

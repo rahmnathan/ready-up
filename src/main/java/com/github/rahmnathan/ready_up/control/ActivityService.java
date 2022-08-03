@@ -27,19 +27,22 @@ public class ActivityService {
     public ActivityDto createActivity(ActivityDto activityDto){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userId = authentication.getPrincipal().toString();
-        User user = userRepository.findUserByUserId(userId);
-        Set<User> members = userRepository.findUsersByUserIdIn(activityDto.getMembers().stream().map(UserDto::getUserId).collect(Collectors.toSet()));
 
-        Activity activity = Activity.builder()
+        User user = userRepository.findUserByUserId(userId)
+                .orElseThrow();
+
+        Activity.ActivityBuilder activityBuilder = Activity.builder()
                 .createdBy(user)
                 .endDate(activityDto.getEndDate())
                 .startDate(activityDto.getStartDate())
-                .members(members)
                 .name(activityDto.getName())
-                .createdDate(activityDto.getCreatedDate())
-                .build();
+                .createdDate(activityDto.getCreatedDate());
 
-        activityRepository.save(activity);
+        if(activityDto.getMembers() != null) {
+            activityBuilder.members(userRepository.findUsersByUserIdIn(activityDto.getMembers().stream().map(UserDto::getUserId).collect(Collectors.toSet())));
+        }
+
+        activityRepository.save(activityBuilder.build());
 
         return activityDto;
     }

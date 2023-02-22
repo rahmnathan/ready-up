@@ -39,7 +39,7 @@ keycloak:
           patterns:
             - "/*"
   ssl-required: external
-  enabled: true
+  enabled: false
 
 management:
   endpoint:
